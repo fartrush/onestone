@@ -1,0 +1,29 @@
+@import "vendor/reset";
+@import "vendor/include-media";
+@import "vendor/swiper-bundle.min";
+
+@import "core/fonts";
+@import "core/mixins";
+@import "core/variables";
+@import "core/functions";
+
+@import "components/typography";
+@import "components/buttons";
+@import "components/links";
+@import "components/forms";
+
+@import "layout/layout";
+@import "layout/header";
+@import "layout/footer";
+
+@import "blocks/hero";
+@import "blocks/how-it-works";
+@import "blocks/features";
+@import "blocks/plans";
+
+@import "blocks/teachers";
+@import "blocks/reviews";
+@import "blocks/faq";
+
+
+

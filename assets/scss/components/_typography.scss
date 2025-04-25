@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+
+    &::selection {
+        color: $c-font-secondary;
+        background-color: $c-brand-primary;
+    }
+}
+
+html {
+    color: $c-font-primary;
+    font-size: 16px;
+    font-family: $font-primary;
+    line-height: 1;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+h1, h2 {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1.15;
+
+    @include media('>=tablet', '<desktop') {
+        font-size: 48px;
+    }
+
+    @include media('<tablet') {
+        font-size: 32px;
+    }
+}
+
+h4 {
+    @include adaptive-font(26, 32);
+    margin-bottom: 1rem;
+}
+
+h5 {
+    @include adaptive-font(18, 20);
+}
+
+hr {
+    @include size(100%, 1px);
+    background-color: rgba(233, 228, 219, 0.2);
+    border: 0;
+    margin: 0;
+}
+
+p, ul li {
+    font-size: 18px;
+    line-height: 1.5;
+
+    @include media('<tablet') {
+        font-size: 16px;
+    }
+}
+
+a {
+    color: $c-font-primary;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+
+    @include hover {
+        color: $c-brand-primary;
+    }
+}

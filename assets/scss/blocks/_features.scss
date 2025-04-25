@@ -1,0 +1,121 @@
+.features {
+  padding: 70px 0 110px;
+  border-radius: 40px 40px 0 0;
+  background: $c-brand-primary;
+  margin-bottom: -40px;
+
+  @include media('<desktop') {
+    padding: 40px 0 80px;
+  }
+
+  @include media('<tablet') {
+    padding: 24px 0 48px;
+    border-radius: 24px 24px 0 0;
+    margin-bottom: -24px;
+  }
+
+}
+
+.features__inner {
+  @extend .container;
+
+  @include media('>=tablet') {
+    background: url('../images/features-bg.svg') no-repeat center;
+    background-position: -45px 69px;
+    background-size: 1180px 536px;
+  }
+
+  @include media('>=tablet', '<desktop') {
+    background-size: contain;
+  }
+
+}
+
+.features__ttl {
+  color: #ffffff;
+  @include media('>=tablet') {
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+  @include media('<tablet') {
+    margin-bottom: 53px;
+  }
+}
+
+.features__list {
+  display: flex;
+
+  @include media('<desktop') {
+    flex-direction: column;
+  }
+
+  @include media('<tablet') {
+    gap: 32px;
+  }
+}
+
+.features__item {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+
+  @include media('>=tablet', '<desktop') {
+    max-width: 50%;
+  }
+
+  &:nth-child(1) {
+    @include media('>=desktop') {
+      margin-right: -60px;
+    }
+  }
+
+  &:nth-child(2) {
+    @include media('>=desktop') {
+      margin-top: 182px
+    }
+
+    @include media('>=tablet', '<desktop') {
+      margin-left: auto;
+      margin-bottom: -30px;
+      text-align: right;
+    }
+  }
+
+  &:nth-child(3) {
+    @include media('>=desktop') {
+      margin-right: -60px;
+    }
+  }
+
+  &:nth-child(4) {
+    @include media('>=desktop') {
+      margin-top: 200px
+    }
+
+    @include media('>=tablet', '<desktop') {
+      margin-left: auto;
+      margin-top: 34px;
+      text-align: right;
+    }
+  }
+}
+
+.features__item-ttl {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.features__item-dsc {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.features__btn {
+  padding: 80px 0 0;
+  display: flex;
+  justify-content: center;
+}
