@@ -2025,7 +2025,10 @@ body {
   transform: rotate(45deg); }
 
 .faq-list__item.--opened .faq-list__content {
-  display: block; }
+  max-height: 100px; }
+  @media (max-width: 767px) {
+    .faq-list__item.--opened .faq-list__content {
+      max-height: 140px; } }
 
 .faq-list__head {
   display: flex;
@@ -2045,5 +2048,8 @@ body {
     height: 32px; }
 
 .faq-list__content {
-  padding: 0 0 24px;
-  display: none; }
+  max-height: 0;
+  overflow: hidden;
+  transition: .5s ease-in-out; }
+  .faq-list__content p {
+    margin-bottom: 24px; }

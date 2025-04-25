@@ -51,7 +51,11 @@
       }
     }
     .faq-list__content {
-      display: block;
+      max-height: 100px;
+
+      @include media('<tablet') {
+        max-height: 140px;
+      }
     }
   }
 
@@ -80,7 +84,11 @@
 }
 
 .faq-list__content {
-  padding: 0 0 24px;
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: .5s ease-in-out;
 
+  p {
+    margin-bottom: 24px;
+  }
 }
