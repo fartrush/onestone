@@ -26,6 +26,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    const headerHeight = header.offsetHeight;
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                e.preventDefault();
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+
     const swiper = new Swiper('.js-reviews-slider', {
         slidesPerView: 1,
         spaceBetween: 20,
