@@ -1184,6 +1184,15 @@ body {
           right: -80px;
           top: 58px;
           transform: translateX(100%); } }
+    .how-it-works .section-head__img {
+      animation: eyeLook 6s ease-in-out infinite alternate;
+      will-change: transform; }
+
+@keyframes eyeLook {
+  from {
+    transform: translateX(0); }
+  to {
+    transform: translateX(570px); } }
 
 .how-it-works__inner {
   position: relative; }
