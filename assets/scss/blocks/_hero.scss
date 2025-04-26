@@ -158,7 +158,6 @@
   position: relative;
   z-index: 2;
   display: flex;
-  padding-bottom: 100px;
 
   @include media('>=desktop') {
     gap: 24px;
@@ -167,6 +166,7 @@
   @include media('<tablet') {
     gap: 16px;
     justify-content: center;
+    padding-bottom: 100px;
   }
 }
 

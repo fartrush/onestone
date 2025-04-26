@@ -1019,15 +1019,15 @@ body {
 .hero-gallery__row {
   position: relative;
   z-index: 2;
-  display: flex;
-  padding-bottom: 100px; }
+  display: flex; }
   @media (min-width: 1025px) {
     .hero-gallery__row {
       gap: 24px; } }
   @media (max-width: 767px) {
     .hero-gallery__row {
       gap: 16px;
-      justify-content: center; } }
+      justify-content: center;
+      padding-bottom: 100px; } }
 
 @media (max-width: 1024px) {
   .hero-gallery__col:nth-child(1) {
@@ -1252,14 +1252,14 @@ body {
           transform: translateX(100%); } }
     @media (min-width: 1025px) {
       .how-it-works .section-head__img {
-        animation: eyeLook 6s ease-in-out infinite alternate;
+        animation: eyeLook 2s ease-in-out infinite alternate;
         will-change: transform; } }
 
 @keyframes eyeLook {
   from {
     transform: translateX(0); }
   to {
-    transform: translateX(570px); } }
+    transform: translateX(80px); } }
 
 .how-it-works__inner {
   position: relative; }
@@ -1366,7 +1366,7 @@ body {
       .how-it-works__item:nth-child(1):after {
         background: url("../images/how-it-works/line-2-mob.svg") no-repeat center;
         background-size: contain;
-        width: 61px;
+        width: 44px;
         height: 128px;
         top: 83px; } }
   @media (min-width: 1025px) {
