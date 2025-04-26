@@ -2000,9 +2000,13 @@ body {
   z-index: 2; }
   @media (min-width: 1025px) {
     .reviews-slider {
-      overflow: visible; }
-      .reviews-slider .swiper-wrapper {
-        overflow: visible; } }
+      overflow: visible; } }
+  @media (min-width: 1025px) {
+    .reviews-slider .swiper-wrapper {
+      overflow: visible; } }
+  @media (max-width: 1024px) {
+    .reviews-slider .swiper-wrapper {
+      padding-top: 30px; } }
 
 .reviews-slider__btn {
   background: none;
@@ -2010,8 +2014,10 @@ body {
   align-items: center;
   justify-content: center;
   position: absolute;
-  z-index: 2;
-  transform: translateY(-50%); }
+  z-index: 2; }
+  @media (min-width: 1025px) {
+    .reviews-slider__btn {
+      transform: translateY(-50%); } }
   .reviews-slider__btn.swiper-button-disabled {
     display: none; }
   @media (min-width: 1025px) {

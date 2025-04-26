@@ -94,9 +94,14 @@
 
   @include media('>=desktop') {
     overflow: visible;
+  }
 
-    .swiper-wrapper {
+  .swiper-wrapper {
+    @include media('>=desktop') {
       overflow: visible;
+    }
+    @include media('<desktop') {
+      padding-top: 30px;
     }
   }
 }
@@ -110,7 +115,10 @@
   justify-content: center;
   position: absolute;
   z-index: 2;
-  transform: translateY(-50%);
+
+  @include media('>=desktop') {
+    transform: translateY(-50%);
+  }
 
   &.swiper-button-disabled {
     display: none;
