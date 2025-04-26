@@ -1204,7 +1204,8 @@ body {
 .how-it-works {
   padding: 72px 0 70px;
   background: linear-gradient(180deg, #F3CD7E 0%, #F8DFAF 2.5%, #FFFFFF 8%);
-  border-radius: 40px 40px 0 0; }
+  border-radius: 40px 40px 0 0;
+  overflow: hidden; }
   @media (max-width: 1024px) {
     .how-it-works {
       padding: 24px 0 40px; } }
@@ -1249,6 +1250,16 @@ body {
           right: -80px;
           top: 58px;
           transform: translateX(100%); } }
+    @media (min-width: 1025px) {
+      .how-it-works .section-head__img {
+        animation: eyeLook 6s ease-in-out infinite alternate;
+        will-change: transform; } }
+
+@keyframes eyeLook {
+  from {
+    transform: translateX(0); }
+  to {
+    transform: translateX(570px); } }
 
 .how-it-works__inner {
   position: relative; }
@@ -1546,6 +1557,9 @@ body {
   @media (min-width: 1025px) {
     .features__item:nth-child(1) {
       margin-right: -60px; } }
+  @media (max-width: 767px) {
+    .features__item:nth-child(2) .features__item-ttl:after {
+      content: unset; } }
   @media (min-width: 1025px) {
     .features__item:nth-child(2) {
       margin-top: 182px; } }
@@ -1572,7 +1586,21 @@ body {
   font-weight: 700;
   font-size: 24px;
   line-height: 1.05;
-  margin-bottom: 8px; }
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  position: relative; }
+  @media (max-width: 767px) {
+    .features__item-ttl:after {
+      content: '';
+      width: 17px;
+      height: 37px;
+      display: block;
+      background: url("../images/title-star.svg") no-repeat center;
+      background-size: contain;
+      position: absolute;
+      right: 0;
+      top: -20px; } }
 
 .features__item-dsc {
   font-weight: 500;
@@ -1800,6 +1828,10 @@ body {
   line-height: 1.584;
   transform: rotate(-2deg);
   position: relative; }
+  @media (max-width: 1024px) {
+    .teachers-head__block {
+      padding: 32px;
+      margin-top: 30px; } }
   .teachers-head__block:before {
     content: '';
     width: 76px;
@@ -1807,13 +1839,27 @@ body {
     display: block;
     background: url("../images/border-nose.svg") no-repeat center;
     background-size: contain;
-    position: absolute;
-    bottom: 84px;
-    left: -123px;
-    transform: translateX(100%) rotate(-90deg); }
+    position: absolute; }
+    @media (min-width: 1025px) {
+      .teachers-head__block:before {
+        bottom: 84px;
+        left: -123px;
+        transform: translateX(100%) rotate(-90deg); } }
+    @media (max-width: 1024px) {
+      .teachers-head__block:before {
+        top: 1px;
+        transform: translateY(-100%); } }
   @media (max-width: 1024px) {
     .teachers-head__block {
       margin-left: auto; } }
+  @media (max-width: 767px) {
+    .teachers-head__block {
+      width: 402px;
+      padding: 24px 40px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+      font-size: 20px; } }
 
 .teachers-list {
   display: flex;

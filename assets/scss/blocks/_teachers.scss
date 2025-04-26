@@ -62,6 +62,12 @@
   transform: rotate(-2deg);
   position: relative;
 
+  @include media('<desktop') {
+    padding: 32px;
+    margin-top: 30px;
+  }
+
+
   &:before {
     content: '';
     width: 76px;
@@ -70,13 +76,31 @@
     background: url('../images/border-nose.svg') no-repeat center;
     background-size: contain;
     position: absolute;
-    bottom: 84px;
-    left: -123px;
-    transform: translateX(100%) rotate(-90deg);
+
+    @include media('>=desktop') {
+      bottom: 84px;
+      left: -123px;
+      transform: translateX(100%) rotate(-90deg);
+    }
+
+    @include media('<desktop') {
+      top: 1px;
+      transform: translateY(-100%);
+    }
   }
 
   @include media('<desktop') {
     margin-left: auto;
+  }
+
+  @include media('<tablet') {
+    width: 402px;
+    //transform: translateX(-30px);
+    padding: 24px 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    font-size: 20px;
   }
 }
 

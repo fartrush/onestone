@@ -2,6 +2,7 @@
   padding: 72px 0 70px;
   background: linear-gradient(180deg, #F3CD7E 0%, #F8DFAF 2.5%, #FFFFFF 8%);
   border-radius: 40px 40px 0 0;
+  overflow: hidden;
 
   @include media('<desktop') {
     padding: 24px 0 40px;
@@ -62,7 +63,19 @@
     }
 
     &__img {
+      @include media('>=desktop') {
+        animation: eyeLook 6s ease-in-out infinite alternate;
+        will-change: transform;
+      }
 
+      @keyframes eyeLook {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(570px);
+        }
+      }
     }
 
     &__ttl {

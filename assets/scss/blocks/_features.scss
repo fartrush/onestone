@@ -71,6 +71,14 @@
   }
 
   &:nth-child(2) {
+    .features__item-ttl {
+      @include media('<tablet') {
+        &:after {
+          content: unset;
+        }
+      }
+    }
+
     @include media('>=desktop') {
       margin-top: 182px
     }
@@ -106,6 +114,24 @@
   font-size: 24px;
   line-height: 1.05;
   margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+
+  @include media('<tablet') {
+    &:after {
+      content: '';
+      width: 17px;
+      height: 37px;
+      display: block;
+      background: url('../images/title-star.svg') no-repeat center;
+      background-size: contain;
+      position: absolute;
+      right: 0;
+      top: -20px;
+    }
+
+  }
 }
 
 .features__item-dsc {
