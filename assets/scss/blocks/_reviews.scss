@@ -4,6 +4,8 @@
   border-radius: 40px 40px 0 0;
   background: $c-bg-primary;
 
+  overflow: hidden;
+
   @include media('<desktop') {
     padding: 40px 0 80px;
   }
