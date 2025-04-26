@@ -1994,13 +1994,15 @@ body {
       display: none; } }
 
 .reviews-slider {
-  overflow: visible;
   display: flex;
   align-items: flex-start;
   position: relative;
   z-index: 2; }
-  .reviews-slider .swiper-wrapper {
-    overflow: visible; }
+  @media (min-width: 1025px) {
+    .reviews-slider {
+      overflow: visible; }
+      .reviews-slider .swiper-wrapper {
+        overflow: visible; } }
 
 .reviews-slider__btn {
   background: none;

@@ -87,16 +87,18 @@
 }
 
 .reviews-slider {
-  overflow: visible;
   display: flex;
   align-items: flex-start;
   position: relative;
   z-index: 2;
 
-  .swiper-wrapper {
+  @include media('>=desktop') {
     overflow: visible;
-  }
 
+    .swiper-wrapper {
+      overflow: visible;
+    }
+  }
 }
 .reviews-slider__item {
 
