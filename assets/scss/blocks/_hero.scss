@@ -1,5 +1,6 @@
 .hero {
   padding: 96px 0 70px;
+  overflow: hidden;
 }
 
 .hero__inner {
@@ -36,17 +37,19 @@
   }
 
   &:before, &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    z-index: 1;
-    width: 34px;
-    height: 34px;
-    background: url('../images/hero-text-line-3.svg') no-repeat center;
-    background-size: contain;
-    transform: rotate(-22.05deg);
-    left: -50px;
-    bottom: 78px;
+    @include media('>=tablet') {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      background: url('../images/hero-text-line-3.svg') no-repeat center;
+      background-size: contain;
+      transform: rotate(-22.05deg);
+      left: -50px;
+      bottom: 78px;
+    }
   }
 }
 
@@ -76,7 +79,7 @@
 
   @include media('<tablet') {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
   &:before, &:after {
@@ -87,22 +90,26 @@
   }
 
   &:before {
-    width: 46px;
-    height: 68px;
-    background: url('../images/hero-text-line-1.svg') no-repeat center;
-    background-size: contain;
-    transform: rotate(-22.05deg);
-    right: -70px;
-    top: 30px;
+    @include media('>=tablet') {
+      width: 46px;
+      height: 68px;
+      background: url('../images/hero-text-line-1.svg') no-repeat center;
+      background-size: contain;
+      transform: rotate(-22.05deg);
+      right: -70px;
+      top: 30px;
+    }
   }
 
   &:after {
-    width: 115px;
-    height: 69px;
-    background: url('../images/hero-text-line-2.svg') no-repeat center;
-    background-size: contain;
-    left: -40px;
-    top: 80px;
+    @include media('>=tablet') {
+      width: 115px;
+      height: 69px;
+      background: url('../images/hero-text-line-2.svg') no-repeat center;
+      background-size: contain;
+      left: -40px;
+      top: 80px;
+    }
   }
 
 }
@@ -118,27 +125,30 @@
   }
 
   &:before {
-    width: 445px;
-    height: 455px;
-    bottom: -75px;
-    left: -75px;
-    filter: blur(100px);
-    background: #D2C7FF;
-    opacity: .5;
+    @include media('>=desktop') {
+      width: 445px;
+      height: 455px;
+      bottom: -75px;
+      left: -75px;
+      filter: blur(100px);
+      background: #D2C7FF;
+      opacity: .5;
+    }
   }
 
   &:after {
-    width: 335px;
-    height: 314px;
-    top: 19px;
-    right: -6px;
-    filter: blur(200px);
-    background: #FFE6D2;
+    @include media('>=desktop') {
+      width: 335px;
+      height: 314px;
+      top: 19px;
+      right: -6px;
+      filter: blur(200px);
+      background: #FFE6D2;
+    }
 
     @include media('<desktop') {
       right: -40px;
       top: 0;
-
     }
   }
 
@@ -148,6 +158,7 @@
   position: relative;
   z-index: 2;
   display: flex;
+  padding-bottom: 100px;
 
   @include media('>=desktop') {
     gap: 24px;
@@ -205,9 +216,6 @@
   height: 100%;
   z-index: 1;
 
-  @include media('<tablet') {
-    display: none;
-  }
 }
 
 .hero-gallery__tag {
@@ -223,55 +231,77 @@
   &:nth-child(1) {
     background: #F8D2FF;
 
-    top: 19px;
-    right: 57px;
+    @include media('>=desktop') {
+      top: 19px;
+      right: 57px;
+    }
 
-    @include media('<desktop') {
+    @include media('>=tablet','<desktop') {
       top: 5px;
       left: -64px;
       right: unset;
       transform: translateX(-100%);
     }
+
+    @include media('<tablet') {
+      bottom: 30px;
+      right: 50px;
+    }
+
   }
   &:nth-child(2) {
     background: #F3CD7E;
 
-    top: 91px;
-    right: 10px;
+    @include media('>=desktop') {
+      top: 91px;
+      right: 10px;
+    }
 
-    @include media('<desktop') {
+    @include media('>=tablet','<desktop') {
       bottom: 75px;
       left: -52px;
       transform: translateX(-100%);
       top: unset;
       right: unset;
     }
+
+    @include media('<tablet') {
+      top: 24px;
+      right: 10px;
+    }
   }
   &:nth-child(3) {
     background: #6050A7;
-
-    bottom: 44px;
-    left: 55px;
     color: #ffffff;
 
-    @include media('<desktop') {
+    @include media('>=desktop') {
+      bottom: 44px;
+      left: 55px;
+    }
+
+    @include media('>=tablet','<desktop') {
       bottom: -40px;
       left: -45px;
       transform: translateY(-100%);
       top: unset;
       right: unset;
     }
+
+    @include media('<tablet') {
+      bottom: 80px;
+      left: 10px;
+    }
   }
 }
 
 .hero-gallery__star {
   position: absolute;
-  bottom: 0;
-  left: 0;
 
   &:nth-child(4) {
-    bottom: 76px;
-    left: 255px;
+    @include media('>=desktop') {
+      bottom: 76px;
+      left: 255px;
+    }
 
     @include media('>=tablet', '<desktop') {
       top: 0;
@@ -279,11 +309,23 @@
       bottom: unset;
       left: unset;
     }
+
+    @include media('<tablet') {
+      top: -25px;
+      right: 0;
+    }
   }
 
   &:nth-child(5) {
-    bottom: 218px;
-    left: -50px;
+    @include media('>=desktop') {
+      bottom: 218px;
+      left: -50px;
+    }
+
+    @include media('<tablet') {
+      bottom: 0;
+      left: 0;
+    }
 
   }
 
@@ -306,4 +348,79 @@
   50% {
     border-color: $c-brand-primary;
   }
+}
+
+
+.how-it-works__vector path {
+
+  stroke-dasharray: 800;
+
+  stroke-dashoffset: 800;
+
+  animation: draw-arrow 3s ease forwards;
+
+}
+
+
+
+@keyframes draw-arrow {
+
+  to {
+
+    stroke-dashoffset: 0;
+
+  }
+
+}
+
+
+
+.hero-gallery__star path {
+
+  stroke-dasharray: 300;
+
+  stroke-dashoffset: 300;
+
+  animation: draw-hero-stars 2.5s ease forwards;
+
+}
+
+
+
+@keyframes draw-hero-stars {
+
+  to {
+
+    stroke-dashoffset: 0;
+
+  }
+
+}
+
+
+
+.how-it-works__vector path,
+
+.hero-gallery__star path, /* если хочешь вместе */
+
+.hero-gallery__tag svg path { /* если у тебя еще SVG в тэгах */
+
+  stroke-dasharray: 800; /* или около того, зависит от длины пути */
+
+  stroke-dashoffset: 800;
+
+  animation: draw-zigzag 4s ease forwards;
+
+}
+
+
+
+@keyframes draw-zigzag {
+
+  to {
+
+    stroke-dashoffset: 0;
+
+  }
+
 }
