@@ -1252,15 +1252,16 @@ body {
           transform: translateX(100%); } }
     .how-it-works .section-head__img .eyes {
       display: flex;
-      gap: 7px;
-      width: 91px; }
+      gap: 7px; }
     .how-it-works .section-head__img .eye-wrapper {
       width: 42px;
       height: 42px;
-      position: relative; }
+      position: relative; 
+      overflow: hidden; }
     .how-it-works .section-head__img .eye {
       width: 100%;
-      height: 100%; }
+      height: 100%; 
+      transition: transform 0.2s ease; }
 
 .how-it-works__inner {
   position: relative; }

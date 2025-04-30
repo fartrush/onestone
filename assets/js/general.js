@@ -1,31 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pupil1 = document.getElementById('pupil1');
     const pupil2 = document.getElementById('pupil2');
-    let angle1 = Math.PI / 2;
-    let angle2 = Math.PI / 2;
-    let direction1 = 1;
-    let direction2 = 1;
+    const eye1 = document.getElementById('eye1');
+    const eye2 = document.getElementById('eye2');
 
-    function animate() {
-        const moveRadius = 40;
+    let moveRight = true;
+    const moveRadius = 60;
 
-        angle1 += direction1 * 0.02;
-        if (angle1 > Math.PI * 5 / 6 || angle1 < Math.PI * 1 / 18) direction1 *= -1; // УГОЛ ДВИЖЕНИЯ
-        const x1 = moveRadius * Math.cos(angle1);
-        const y1 = moveRadius * Math.sin(angle1);
-        pupil1.setAttribute('transform', `translate(${410 + x1}, ${580 + y1})`);
+    function moveEyes() {
+      const angle = moveRight ? Math.PI / 4 : (3 * Math.PI) / 4; // вправо-влево
+      const x = moveRadius * Math.cos(angle);
+      const y = moveRadius * Math.sin(angle);
 
-        angle2 += direction2 * 0.02;
-        if (angle2 > Math.PI * 5 / 6 || angle2 < Math.PI * 1 / 18) direction2 *= -1;
-        const x2 = moveRadius * Math.cos(angle2);
-        const y2 = moveRadius * Math.sin(angle2);
-        pupil2.setAttribute('transform', `translate(${410 + x2}, ${580 + y2})`);
+document.querySelector('#eye1 .iris-group').setAttribute('transform', `translate(${x}, ${y})`);
+pupil1.setAttribute('transform', `translate(${410 + x}, ${400 + y})`);
 
-        requestAnimationFrame(animate);
+document.querySelector('#eye2 .iris-group').setAttribute('transform', `translate(${x}, ${y})`);
+pupil2.setAttribute('transform', `translate(${410 + x}, ${400 + y})`);
+
+
+      moveRight = !moveRight;
+
+      setTimeout(moveEyes, 2500); // пауза 1.5 секунды между сменой направления
     }
 
-    animate();
-});
+    moveEyes();
+
+    function blink() {
+      [eye1, eye2].forEach(eye => {
+        eye.style.transition = 'transform 0.1s ease';
+        eye.style.transform = 'scaleY(0.05)';
+        setTimeout(() => {
+          eye.style.transform = 'scaleY(1)';
+        }, 100);
+      });
+
+      const nextBlink = 5000 + Math.random() * 5500; // 2.5s до 6s рандом
+      setTimeout(blink, nextBlink);
+    }
+
+    blink();
+  });
 
 document.addEventListener('DOMContentLoaded', function () {
     const items = document.querySelectorAll('.how-it-works__item');
@@ -117,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-const names = ['Emily', 'Lena', 'Sophie'];
+const names = ['Emily', 'Lena', 'Jonas'];
 const typedSpan = document.querySelector('.typed-name');
 let nameIndex = 0;
 let charIndex = 0;
