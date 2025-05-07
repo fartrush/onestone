@@ -2150,7 +2150,7 @@ body {
   max-height: 100px; }
   @media (max-width: 767px) {
     .faq-list__item.--opened .faq-list__content {
-      max-height: 140px; } }
+      max-height: 240px; } }
 
 .faq-list__head {
   display: flex;
