@@ -513,7 +513,7 @@
                     </svg>
                 </a>
             </div>
-            <a href="#" class="footer__link">Impressum</a>
+            <a href="#" id="open-impressum" class="footer__link">Impressum</a>
         </div>
         <div class="footer__bg">
             <img src="assets/images/footer-bg.png" alt="">
@@ -528,7 +528,7 @@
 <div id="cookie-consent" class="cookie-consent hidden">
   <div class="cookie-consent__container">
     <p>
-      Wir nutzen Cookies zur Analyse von Zugriffen. Dabei können personenbezogene Daten an Google (USA) übermittelt werden. Ihre Zustimmung ist freiwillig und widerrufbar. Mehr in der <a href="/datenschutz" target="_blank">Datenschutzerklärung</a>.
+      Wir nutzen Cookies zur Analyse von Zugriffen. Dabei können personenbezogene Daten an Google (USA) übermittelt werden. Ihre Zustimmung ist freiwillig und widerrufbar. Mehr in der <a href="#" id="open-privacy">Datenschutzerklärung</a>.
     </p>
     <div class="cookie-consent__buttons">
       <button id="accept-cookies" class="btn btn--dark">Akzeptieren</button>
@@ -537,23 +537,72 @@
   </div>
 </div>
 
+<div id="impressum-modal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Schließen">×</button>
+    <h2>Impressum</h2>
+    <div class="modal-scroll">
+      <p><strong>Verantwortlich gemäß § 5 TMG:</strong><br>
+      Max Mustermann<br>
+      Musterstraße 123<br>
+      12345 Musterstadt<br><br>
+      Telefon: +49 123 456789<br>
+      E-Mail: kontakt@onestone.de<br><br>
+      Umsatzsteuer-ID: DE123456789<br>
+      Inhaltlich verantwortlich: Max Mustermann<br><br>
+      Quelle: <a href="#" target="_blank">onestone.de</a></p>
+    </div>
+  </div>
+</div>
+
+<div id="privacy-modal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Schließen">×</button>
+    <h2>Datenschutzerklärung</h2>
+    <div class="modal-scroll">
+      <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Personenbezogene Daten werden auf dieser Website nur im technisch notwendigen Umfang erhoben.</p>
+
+      <p>Verantwortlich für die Datenverarbeitung:</p>
+      <p>
+        Max Mustermann<br>
+        Musterstraße 123<br>
+        12345 Musterstadt<br>
+        E-Mail: kontakt@onestone.de
+      </p>
+
+      <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (z. B. Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis.</p>
+
+      <p>Weitere Informationen finden Sie in unserer vollständigen Datenschutzerklärung.</p>
+
+      <p>Quelle: <a href="https://www.e-recht24.de" target="_blank">e-recht24.de</a></p>
+    </div>
+  </div>
+</div>
+
+
+
 <script>
   const consentKey = 'cookieConsent';
 
   function setCookieConsent(accepted) {
     localStorage.setItem(consentKey, accepted ? 'accepted' : 'declined');
-    document.getElementById('cookie-consent').classList.add('hidden');
+
+    const banner = document.getElementById('cookie-consent');
+    banner.classList.remove('visible');
+    setTimeout(() => {
+      banner.classList.add('hidden');
+    }, 400); // подождём окончания анимации
 
     if (accepted) {
-      // Активируем GTM только после согласия
+      // Активируем Google Tag Manager
       const gtmScript = document.createElement('script');
       gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WH8DNT25';
       gtmScript.async = true;
       document.head.appendChild(gtmScript);
 
-      // Google Analytics повторно
+      // Активируем Google Analytics
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
       gtag('config', 'G-4Z6B2Q5BBK');
     }
@@ -561,14 +610,95 @@
 
   window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem(consentKey);
+    const banner = document.getElementById('cookie-consent');
+
     if (!saved) {
-      document.getElementById('cookie-consent').classList.remove('hidden');
+      banner.classList.remove('hidden');
+      requestAnimationFrame(() => banner.classList.add('visible'));
     } else if (saved === 'accepted') {
       setCookieConsent(true);
     }
 
     document.getElementById('accept-cookies').addEventListener('click', () => setCookieConsent(true));
     document.getElementById('decline-cookies').addEventListener('click', () => setCookieConsent(false));
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('impressum-modal');
+    const closeBtn = modal.querySelector('.modal-close');
+    const openBtn = document.getElementById('open-impressum');
+
+    const closeModal = () => {
+      modal.classList.remove('active');
+      modal.classList.add('closing');
+      setTimeout(() => {
+        modal.classList.remove('closing');
+        document.body.classList.remove('is-modal-open');
+      }, 300); // должно совпадать с CSS transition: 0.3s
+    };
+
+    if (openBtn) {
+      openBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.classList.add('is-modal-open');
+      });
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modals = {
+      impressum: document.getElementById('impressum-modal'),
+      privacy: document.getElementById('privacy-modal')
+    };
+
+    const openButtons = {
+      impressum: document.getElementById('open-impressum'),
+      privacy: document.getElementById('open-privacy')
+    };
+
+    const openModal = (modal) => {
+      modal.classList.add('active');
+      document.body.classList.add('is-modal-open');
+    };
+
+    const closeModal = (modal) => {
+      modal.classList.remove('active');
+      modal.classList.add('closing');
+      setTimeout(() => {
+        modal.classList.remove('closing');
+        document.body.classList.remove('is-modal-open');
+      }, 300);
+    };
+
+    // Навешиваем обработчики открытия
+    Object.entries(openButtons).forEach(([key, btn]) => {
+      if (btn && modals[key]) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openModal(modals[key]);
+        });
+      }
+    });
+
+    // Навешиваем обработчики закрытия по крестику и по фону
+    Object.values(modals).forEach((modal) => {
+      const closeBtn = modal.querySelector('.modal-close');
+      closeBtn.addEventListener('click', () => closeModal(modal));
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal(modal);
+      });
+    });
   });
 </script>
 
