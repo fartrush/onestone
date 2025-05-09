@@ -2333,3 +2333,150 @@ body {
     font-size: 18px;
   }
 }
+/*Datenshutz*/
+
+ /* Стили модального окна */
+ .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  font-size: 24px;
+  margin: 0;
+  padding: 20px 25px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-weight: 600;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+.modal-scroll {
+  padding: 5px 25px 25px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Стили содержимого */
+.privacy-section {
+  margin-bottom: 25px;
+}
+
+.privacy-section h3 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: #222;
+  font-weight: 600;
+}
+
+.privacy-section p, 
+.privacy-section li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.privacy-section ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.nested-section {
+  margin-top: 15px;
+  padding-left: 15px;
+}
+
+.nested-section h4 {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+/* Стили для details/summary */
+details.privacy-section {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+}
+
+details.privacy-section summary {
+  cursor: pointer;
+  padding: 8px 0;
+  font-size: 18px;
+  outline: none;
+}
+
+details.privacy-section summary:hover {
+  color: #007bff;
+}
+
+/* Стили для меток */
+.label {
+  display: inline-block;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  .modal-title {
+    font-size: 20px;
+    padding: 15px 20px;
+  }
+  
+  .modal-scroll {
+    padding: 5px 20px 20px;
+  }
+  
+  .privacy-section h3 {
+    font-size: 18px;
+  }
+  
+  .nested-section h4 {
+    font-size: 16px;
+  }
+}
