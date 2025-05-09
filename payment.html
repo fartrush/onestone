@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onestone – Preise</title>
+  <link rel="stylesheet" href="main.css" />
+  <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: #fefefe;
+      color: #000;
+    }
+
+    .pricing-section {
+      padding: 64px 24px;
+      background-color: #f9f8ff;
+      text-align: center;
+    }
+
+    .pricing-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      color: #000;
+    }
+
+    .pricing-table-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="pricing-section">
+    <h2 class="pricing-title">Wähle dein Paket</h2>
+
+    <div class="pricing-table-wrapper">
+      <stripe-pricing-table
+        pricing-table-id="prctbl_1RMmz8JXdy6BSoh6ohT1AILq"
+        publishable-key="pk_live_51RJIXKJXdy6BSoh64vpOD1CrQ4G0fyk1vMHT2AoOfyCJClLRsLfe0L6wfUUecDBRqBpX0O64ldRs6fbKHjGj3bVb00DMg5dnxq">
+      </stripe-pricing-table>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Onestone GbR – <a href="#" id="open-impressum">Impressum</a> · <a href="#" id="open-privacy">Datenschutz</a>
+  </footer>
+
+  <!-- Optional: модалки можно вставить ниже -->
+</body>
+</html>
